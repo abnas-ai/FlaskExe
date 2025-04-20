@@ -1,19 +1,15 @@
+from . import app
+from .forms import TaskForm
+from .models import Task
+from flask import render_template, redirect, url_for, flash
+from . import db
 
-
-from flask import render_template
-from app import app
-from app.models import User
 
 @app.route('/')
 def home():
-    users = User.query.all()
-    return render_template('index.html', users=users)
-
-
-from flask import render_template, redirect, url_for, flash
-from app.forms import TaskForm
-from app.models import Task, db
-
+    return "Welcome to the Task Manager!" 
+    
+    
 @app.route('/create-task', methods=['GET', 'POST'])
 def create_task():
     form = TaskForm()
@@ -28,11 +24,9 @@ def create_task():
         db.session.commit()
         flash('Task created successfully!')
         return redirect(url_for('create_task'))
-    return render_template('create_task.html', form=form)
+    return render_template('forms.html', form=form)
+
 @app.route('/tasks')
 def tasks():
     tasks = Task.query.all()
-    return render_template('tasks.html', tasks=tasks)
-
-
-
+    return render_template('forms.html', tasks=tasks)

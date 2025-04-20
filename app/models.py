@@ -1,5 +1,5 @@
-from app import db
-
+from . import db
+from . import app
 
 class User(db.Model):
   
@@ -25,3 +25,6 @@ class Task(db.Model):
    
     def __repr__(self):
         return f"{self.title}"
+
+with app.app_context():
+    db.create_all()

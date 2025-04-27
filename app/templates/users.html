@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="{{ url_for('home') }}" method="post">
+
+{{ user_form.username.label(class="form-label") }} {{ user_form.username(class="form-control w-50")}}
+{{ user_form.first_name.label(class="form-label") }} {{ user_form.first_name(class="form-control w-50")}}
+{{ user_form.last_name.label(class="form-label") }} {{ user_form.last_name(class="form-control w-50") }}
+{{ user_form.password.label(class="form-label") }} {{ user_form.password(class="form-control w-50") }}
+{{ user_form.submit }}
+
+
+</form>
+
+
+
+{% endblock %}
